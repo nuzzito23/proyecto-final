@@ -36,6 +36,10 @@
   gap: 1rem;
 }
 
+h2{
+  text-align: center;
+}
+
 h3{
   height: 15%;
   text-align: center;
