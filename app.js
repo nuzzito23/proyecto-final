@@ -18,7 +18,7 @@ app.use(cors({
 }));
 app.use('/api/users', userRoute); // Use the user routes
 app.use('/api/products', productRoute); // Use the product routes
-//app.use('/api/ventas', ventaRoute); // Use the venta routes
+app.use('/api/ventas', ventaRoute); // Use the venta routes
 // app.use('/', (req, res) => {
 //     // res.status(200).json({ message: 'API is running' });
 // }
