@@ -1,0 +1,31 @@
+h1{
+    text-align: center;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#contenido{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 250px;
+    height: 250px;
+    gap: 0.5rem;
+    border: 2.5px solid black;
+    border-radius: 20px;
+}
+
+.new-password{
+    display: flex;
+    margin-top: 1.5rem;
+}
+
+#enter{
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}

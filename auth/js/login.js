@@ -16,7 +16,27 @@ document.querySelector('#enter').addEventListener('click', function(event) {
         alert('La contraseña debe tener al menos 8 caracteres.');
         return;
     }
-
-    alert('Inicio de sesión exitoso.');
-    //Enviando el formulario
+    login(email,password)
 });
+const login = async (email,password) => {
+const response = await fetch('http://localhost:3000/api/users/login', {
+    method: 'POST',
+    headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+        email: email,
+        password: password
+    })
+});
+
+if (!response.ok) {
+    console.error('Error en el login:', response.status);
+    return;
+}
+
+const data = await response.json();
+console.log('Login exitoso:', data);
+}
+//Enviando el formulario
