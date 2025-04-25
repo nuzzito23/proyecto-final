@@ -40,3 +40,12 @@ const data = await response.json();
 console.log('Login exitoso:', data);
 }
 //Enviando el formulario
+
+document.addEventListener('DOMContentLoaded', () => {
+    const loginButton = document.getElementById('admin-login');
+    if (loginButton) {
+        loginButton.addEventListener('click', () => {
+            window.location.href = './login_admin.html';
+        });
+    }
+});

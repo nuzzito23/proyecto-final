@@ -20,3 +20,12 @@ document.querySelector('#enter').addEventListener('click', function(event) {
     alert('Inicio de sesión exitoso.');
     //Enviando el formulario
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const passwordButton = document.getElementsByClassName('new-password');
+    if (passwordButton) {
+        passwordButton.addEventListener('click', () => {
+            window.location.href = './html/password.html';
+        });
+    }
+});

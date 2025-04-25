@@ -16,9 +16,21 @@ main{
     height: 250px;
     gap: 0.5rem;
     border: 2.5px solid black;
+    border-radius: 20px;
 }
 
-.enter{
+.new-password{
+    display: flex;
+    margin-top: 1.5rem;
+}
+
+#enter{
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+#admin-login{
     display: flex;
     justify-content: center;
     margin-top: 1.5rem;
