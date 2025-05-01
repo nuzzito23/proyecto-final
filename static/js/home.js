@@ -26,11 +26,11 @@ async function fetchCatalogo() {
       const catalogoContainer = document.getElementById('catalogo-container');
       catalogoContainer.innerHTML = ''; // Clear the container
       
-      data.forEach(item => {
+      data.data.forEach(item => {
         const catalogItem = document.createElement('div');
         catalogItem.className = 'item-catalogo';
         catalogItem.innerHTML = `
-          <img class="modelos" src="${item.img}" alt="Imagen">
+          <img class="modelos" src="${item.image}" alt="Imagen">
           <h3>${item.name}</h3>
           <p>${item.description}</p>
         `;

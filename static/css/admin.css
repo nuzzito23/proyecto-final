@@ -72,3 +72,12 @@
     justify-content: space-between;
     align-items: center;
   }
+
+  .edit-btn{
+    cursor: pointer;
+    background-color: aqua;
+  }
+
+  .edit-btn:hover{
+    background-color: aquamarine;
+  }

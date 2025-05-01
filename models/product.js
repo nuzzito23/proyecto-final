@@ -8,7 +8,6 @@ const productSchema = new Schema({
     price: Number,
     color: String,
     stock: Number,  
-    img: String,
 });
 
 module.exports = mongoose.model('Product', productSchema); // Exportar el modelo
