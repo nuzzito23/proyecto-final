@@ -20,3 +20,4 @@ document.querySelector('#enter').addEventListener('click', function(event) {
     alert('Inicio de sesión exitoso.');
     //Enviando el formulario
 });
+

@@ -37,6 +37,8 @@ if (!response.ok) {
 }
 
 const data = await response.json();
+saveToken(data.token); // Guardar el token en localStorage
+redirectAfterLogin(data); // Redirigir después de iniciar sesión
 console.log('Login exitoso:', data);
 }
 //Enviando el formulario
@@ -49,3 +51,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+function saveToken(token) {
+    localStorage.setItem("authToken", token);
+}
+
+function redirectAfterLogin() {
+    const token = localStorage.getItem("authToken") || sessionStorage.getItem("authToken");
+    if (token) {
+        window.location.href = "./index.html"; // Change to your logged-in page
+    }
+}

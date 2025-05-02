@@ -81,3 +81,11 @@
   .edit-btn:hover{
     background-color: aquamarine;
   }
+
+  #catalogo-container{
+    width: auto;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
