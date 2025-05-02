@@ -18,7 +18,7 @@ app.use(cors({
 }));
 app.use(express.static(__dirname+'/static')); // Serve static files from the current directory
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/views/home.html'); // Serve the home.html files
+    res.sendFile(__dirname + '/static/html/home.html'); // Serve the home.html files
   });
 app.use('/api/users', userRoute); // Use the user routes
 app.use('/api/products', productRoute); // Use the product routes

@@ -1,3 +1,13 @@
+function checkAuth() {
+    const token = localStorage.getItem("authToken") || sessionStorage.getItem("authToken");
+    if (!token) {
+        window.location.href = "/home.html"; // Change to your login page
+    }
+}
+
+// Call this function on page load to enforce authentication
+checkAuth();
+
 const carrito = [];
 
         document.querySelectorAll('.add').forEach((button, index) => {
@@ -87,3 +97,41 @@ async function fetchCatalogo() {
 
   // Call the function on page load
   fetchCatalogo();
+
+  document.getElementById('catalogo-container').addEventListener('click', (event) => {
+    if (event.target.classList.contains('add')) {
+        const item = event.target.parentElement;
+        const productoNombre = item.querySelector('h3').textContent;
+        const productoImagen = item.querySelector('img').src;
+        const productoPrecio = parseFloat(productoNombre.match(/\d+/)[0]);
+
+        cart.push({ name: productoNombre, image: productoImagen, price: productoPrecio });
+        cartCountElement.textContent = cart.length;
+
+        // Updating cart visualization
+        const total = cart.reduce((sum, product) => sum + product.price, 0);
+        cartItemsElement.innerHTML = cart.map(product => `
+            <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                <img src="${product.image}" alt="${product.name}" style="width: 50px; height: 50px; margin-right: 10px;">
+                <div>
+                    <p style="margin: 0;">${product.name}</p>
+                    <p style="margin: 0;">Precio: $${product.price}</p>
+                </div>
+            </div>
+        `).join('') + `<p style="font-weight: bold; margin-top: 10px;">Total a pagar: $${total.toFixed(2)}</p>;`
+
+        alert(`${productoNombre} agregado al carrito.`);
+        console.log('Carrito:', cart);
+    }
+});
+
+const cerrarSesionButton = document.getElementById('cerrar-sesion');
+cerrarSesionButton.addEventListener('click', () => {
+    localStorage.removeItem('authToken'); // Remove token from local storage
+    window.location.href = './login.html'; // Redirect to login page
+    logout(); // Call the logout function
+});
+function logout() {
+    localStorage.removeItem("authToken");
+    window.location.href = "login.html"; // Redirigir a la página de inicio de sesión
+}

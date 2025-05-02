@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuOptions = document.getElementById('admin-menu-options');
     const salesHistoryButton = document.getElementById('view-sales-history');
     const salesHistorySection = document.getElementById('sales-history');
+    const cerrarSesionButton = document.getElementById('cerrar-sesion');
 
     // Toggle menu visibility
     menuIcon.addEventListener('click', () => {
@@ -36,6 +37,7 @@ async function fetchCatalogo() {
           <img class="modelos" src="${item.image}" alt="Imagen">
           <h3>${item.name}</h3>
           <p>${item.description}</p>
+          <button class="edit-btn">Editar producto</button>
         `;
         catalogoContainer.appendChild(catalogItem);
       });
@@ -46,3 +48,14 @@ async function fetchCatalogo() {
 
   // Call the function on page load
   fetchCatalogo();
+
+  // Close session and redirect to login page
+  cerrarSesionButton.addEventListener('click', () => {
+    localStorage.removeItem('authToken'); // Remove token from local storage
+    window.location.href = './login_admin.html'; // Redirect to login page
+    logout(); // Call the logout function
+});
+  function logout() {
+    localStorage.removeItem("authToken");
+    window.location.href = "login_admin.html"; // Redirigir a la página de inicio de sesión
+}
