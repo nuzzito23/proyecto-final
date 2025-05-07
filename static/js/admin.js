@@ -4,8 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const salesHistoryButton = document.getElementById('view-sales-history');
   const salesHistorySection = document.getElementById('sales-history');
   const cerrarSesionButton = document.getElementById('cerrar-sesion');
-  cons
-
+  
   // Toggle menu visibility
   menuIcon.addEventListener('click', () => {
     menuOptions.style.display = menuOptions.style.display === 'block' ? 'none' : 'block';

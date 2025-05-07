@@ -9,7 +9,7 @@ const userSchema = new Schema({
     address: String,
     city: String,
     country: String,
-    
+    role: String 
 });
 
 module.exports = mongoose.model('User', userSchema); // Exportar el modelo
