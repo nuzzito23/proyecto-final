@@ -34,17 +34,17 @@
         <div class='ending'>
         <button id="cerrar-sesion">Cerrar sesion</button>
         </div>
-        <div id="editModal" class="modal">
-          <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Editar Producto</h2>
-            <label>Nombre:</label>
-            <input type="text" id="productName">
-            <label>Precio:</label>
-            <input type="number" id="productPrice">
-            <button onclick="saveChanges()">Guardar</button>
-          </div>
-        </div>
         <script src="/js/admin.js"></script>
 </body>
+<div id="editModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2>Editar Producto</h2>
+    <label>Nombre:</label>
+    <input type="text" id="productName">
+    <label>Precio:</label>
+    <input type="number" id="productPrice">
+    <button onclick="saveChanges()">Guardar</button>
+  </div>
+</div>
 </html>
