@@ -29,7 +29,9 @@
           <h2>Catalogo</h2>
         </main>
         <div id="catalogo-container"></div>
-       </div>
+      </div>
+      <button class="prev-btn">&#8249;</button> 
+      <button class="next-btn">&#8250;</button>
         <h4>Inversiones Melfi C.A.</h4>
         <div class='ending'>
         <button id="cerrar-sesion">Cerrar sesion</button>
@@ -40,10 +42,15 @@
   <div class="modal-content">
     <span class="close" onclick="closeModal()">&times;</span>
     <h2>Editar Producto</h2>
+    <div id="productId"></div>
     <label>Nombre:</label>
     <input type="text" id="productName">
+    <label>Descripcion:</label>
+    <input type="text" id="productDescription">
     <label>Precio:</label>
     <input type="number" id="productPrice">
+    <label>Disponibles:</label>
+    <input type="text" id="productStock">
     <button onclick="saveChanges()">Guardar</button>
   </div>
 </div>

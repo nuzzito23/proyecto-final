@@ -19,7 +19,7 @@ document.querySelector('#enter').addEventListener('click', function(event) {
     login(email,password)
 });
 const login = async (email,password) => {
-const response = await fetch('http://localhost:3000/api/users/login', {
+const response = await fetch('http://localhost:3000/api/users/admin/login', {
     method: 'POST',
     headers: {
         'Access-Control-Allow-Origin': '*',

@@ -14,8 +14,9 @@ exports.createProduct = async (req, res) => {
 
 exports.editProduct = async (req, res) => {
   try {
-    const {id, ...productObject} = req.body; // Get product data from request body
-    const product = await Product.findByIdAndUpdate(id, productObject, { new: true }); // Update product in MongoDB
+    const _id = req.params.id
+    const {productObject} = req.body; // Get product data from request body
+    const product = await Product.findByIdAndUpdate(_id, productObject, { new: true }); // Update product in MongoDB
     res.status(201).json({ message: 'Edit product successfully', data: product });
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -36,6 +37,15 @@ exports.getProduct = async (req, res) => {
   try {
     const products = await Product.findOne({_id: req.params.id}); // Fetch all products from MongoDB
     res.status(200).json({ message: 'Get products successfully', data: products });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+}
+
+exports.deleteProduct = async (req, res) => {
+  try {
+    const product = await Product.findByIdAndDelete(req.params.id); // Delete product from MongoDB
+    res.status(200).json({ message: 'Delete product successfully', data: product });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
