@@ -116,12 +116,15 @@ async function fetchCatalogo() {
                 <div>
                     <p style="margin: 0;">${product.name}</p>
                     <p style="margin: 0;">Precio: $${product.price}</p>
+                    
                 </div>
             </div>
-        `).join('') + `<p style="font-weight: bold; margin-top: 10px;">Total a pagar: $${total.toFixed(2)}</p>;`
+        `).join('') + `<p style="font-weight: bold; margin-top: 10px;">Total a pagar: $${total.toFixed(2)}</p>;
+        <button>Pagar</button>`
 
         alert(`${productoNombre} agregado al carrito.`);
         console.log('Carrito:', cart);
+        
     }
 });
 
