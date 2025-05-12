@@ -200,3 +200,8 @@ async function fetchProductUpdate(productId,ProductData) {
     console.error("Error fetching product details:", error);
   }
 }
+
+function toggleMenu() {
+  let menu = document.getElementsById('menu');
+  menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+}

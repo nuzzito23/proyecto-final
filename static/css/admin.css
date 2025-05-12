@@ -1,3 +1,7 @@
+nav {
+  position: relative;
+}
+
 .header-content {
   display: flex;
   flex-direction: row;
@@ -157,4 +161,45 @@ p {
   min-height: 200px;
   display: flex;
   flex-direction: column;
+}
+
+/* .menu-icon {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+} */
+
+.menu-container {
+  position: relative;
+}
+.menu-icon {
+  display: block;
+  cursor: pointer;
+  font-size: 24px;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  width: 50px;
+}
+.menu {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 200px;
+  background-color: #333;
+  color: white;
+  flex-direction: column;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+.menu a {
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+  display: block;
+  transition: background 0.3s;
+}
+.menu a:hover {
+  background-color: #555;
 }

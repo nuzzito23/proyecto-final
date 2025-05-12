@@ -1,42 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/admin.css">
-    <title>Inversiones Melfi C.A.</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/admin.css">
+  <title>Inversiones Melfi C.A.</title>
 </head>
+
 <body>
-    <div class='header-content'>
-        <div class='header-content-title'>
-        <h1>Inversiones Melfi C.A.</h1>
+  <nav>
+  <div class='header-content'>
+    <div class='header-content-title'>
+      <h1>Inversiones Melfi C.A.</h1>
+    </div>
+    <div class='header-content-nav'>
+
+        <div class="menu-container">
+          <div class="menu-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+          </div>
+          <div class="menu" id="menu">
+            <a href="#">Inicio</a>
+            <a href="#">Productos</a>
+            <a href="#">Servicios</a>
+            <a href="#">Contacto</a>
+          </div>
         </div>
-        <div class='header-content-nav'>
-        <nav>
-        <button id="cerrar-sesion">Cerrar sesion</button>
-        </nav>
-       </div>
       </div>
-        <div>
-        <h1>Encuentra tu calzado ideal</h1>
-        <p>Somos una empresa familiar de calzado para todas las edades</p>
-        <div id="portada">
-          <img src="/imgs/zapateria.jpg"><img>
-          <img src="/imgs/zapateria.jpg"><img>
-        </div>
-        </div>
-        <main class="contenido">
-          <h2>Catalogo</h2>
-        </main>
-        <div id="catalogo-container"></div>
-      </div>
-      <button class="prev-btn">&#8249;</button> 
-      <button class="next-btn">&#8250;</button>
-        <h4>Inversiones Melfi C.A.</h4>
-        <div class='ending'>
-        <button id="cerrar-sesion">Cerrar sesion</button>
-        </div>
-        <script src="/js/admin.js"></script>
+    </div>
+    <div>
+  </nav>
+    <h1>Encuentra tu calzado ideal</h1>
+    <p>Somos una empresa familiar de calzado para todas las edades</p>
+    <div id="portada">
+      <img src="/imgs/zapateria.jpg"><img>
+      <img src="/imgs/zapateria.jpg"><img>
+    </div>
+  </div>
+  <main class="contenido">
+    <h2>Catalogo</h2>
+  </main>
+  <div id="catalogo-container"></div>
+  </div>
+  <button class="prev-btn">&#8249;</button>
+  <button class="next-btn">&#8250;</button>
+  <h4>Inversiones Melfi C.A.</h4>
+  <div class='ending'>
+    <button id="cerrar-sesion">Cerrar sesion</button>
+  </div>
+  <script src="/js/admin.js"></script>
 </body>
 <div id="editModal" class="modal">
   <div class="modal-content">
@@ -54,4 +70,5 @@
     <button onclick="saveChanges()">Guardar</button>
   </div>
 </div>
+
 </html>
