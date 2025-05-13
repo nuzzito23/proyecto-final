@@ -9,45 +9,48 @@
 </head>
 
 <body>
-  <nav>
-  <div class='header-content'>
-    <div class='header-content-title'>
+  <nav class="navbar">
+    <div class="logo">
+      <img class="image-logo" src="/imgs/im-logo.jpg" title="logo inversiones melfi">
       <h1>Inversiones Melfi C.A.</h1>
     </div>
-    <div class='header-content-nav'>
-
-        <div class="menu-container">
-          <div class="menu-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="currentColor" class="">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-          </div>
-          <div class="menu" id="menu">
-            <a href="#">Inicio</a>
-            <a href="#">Productos</a>
-            <a href="#">Servicios</a>
-            <a href="#">Contacto</a>
-          </div>
-        </div>
-      </div>
+    <ul class="nav-menu">
+      <li><a href="/html/ventas_historial_admin.html">Historial de Ventas</a></li>
+      <li><a id="cerrar-sesion" href="/html/login.html">Cerrar Sesion</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+      ☰
     </div>
-    <div>
   </nav>
-    <h1>Encuentra tu calzado ideal</h1>
-    <p>Somos una empresa familiar de calzado para todas las edades</p>
-    <div id="portada">
-      <img src="/imgs/zapateria.jpg"><img>
-      <img src="/imgs/zapateria.jpg"><img>
-    </div>
+
+  <h1>Encuentra tu calzado ideal</h1>
+  <p>Somos una empresa familiar de calzado para todas las edades</p>
+  <div id="portada">
+    <img src="/imgs/zapateria.jpg"><img>
+    <img src="/imgs/zapateria.jpg"><img>
+  </div>
   </div>
   <main class="contenido">
     <h2>Catalogo</h2>
   </main>
-  <div id="catalogo-container"></div>
+  <div class="add-product">
+    <button onclick="openProductModal()" class="add-product-btn">Agregar Producto</button>
   </div>
-  <button class="prev-btn">&#8249;</button>
-  <button class="next-btn">&#8250;</button>
+  <div class="catalogo-container">
+    <div class="pagination-container">
+      <button class="prev-button" onclick="prevPage()">←</button>
+    </div>
+
+    <div id="catalogo-items">
+    </div>
+
+    <div class="pagination-container">
+      <button class="next-button" onclick="nextPage()">→</button>
+    </div>
+  </div>
+
+  </div>
+  </div>
   <h4>Inversiones Melfi C.A.</h4>
   <div class='ending'>
     <button id="cerrar-sesion">Cerrar sesion</button>
@@ -69,6 +72,26 @@
     <input type="text" id="productStock">
     <button onclick="saveChanges()">Guardar</button>
   </div>
+</div>
+<div id="create-product-modal" class="modal">
+  <form id="product-form">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Crear Producto</h2>
+      <div id="productId"></div>
+      <label>Nombre:</label>
+      <input type="text" id="productName">
+      <label>Descripcion:</label>
+      <input type="text" id="productDescription">
+      <label>Precio:</label>
+      <input type="number" id="productPrice">
+      <label>Disponibles:</label>
+      <input type="text" id="productStock">
+      <label for="image">Imagen del producto:</label>
+      <input type="file" id="image" name="image" accept="image/*" required>
+      <button type="submit">Guardar</button>
+    </div>
+  </form>
 </div>
 
 </html>

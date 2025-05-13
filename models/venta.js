@@ -6,6 +6,7 @@ const ventaSchema = new Schema({
     nombre: String,
     email: String,
     phone: String,
+    price: Number,
     address: String,
     city: String,
     country: String,
@@ -13,7 +14,9 @@ const ventaSchema = new Schema({
     products: [
         {
             id_producto: { type: Schema.Types.ObjectId, ref: 'Product' },
-            cantidad: Number
+            cantidad: Number,
+            price: Number,
+            name: String,
         }
     ],
 });

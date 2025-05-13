@@ -12,6 +12,9 @@ async function fetchOrders() {
                 <td>${order.nombre}</td>
                 <td>${order.email}</td>
                 <td>${order.phone}</td>
+                <td>${order.price}</td>
+                <td>${order.address}</td>
+                <td>${JSON.stringify(order.products)}</td>
             `;
             tableBody.appendChild(row);
         });

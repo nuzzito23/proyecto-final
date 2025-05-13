@@ -1,9 +1,18 @@
 const express = require('express');
+const multer = require('multer'); // Import multer for file uploads
 const router = express.Router();
 const ProductController = require('../controllers/products.controller'); // Import the ProductController
 
+const storage = multer.diskStorage({
+  destination: "imgs/",
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + "-" + file.originalname);
+  },
+});
+
+const upload = multer({ storage }); // Create a multer instance with the defined storage
 // Route for product registration
-router.post('/', ProductController.createProduct); // Handle POST requests to create a new product
+router.post('/', upload.single("image"), ProductController.createProduct); // Handle POST requests to create a new product
 router.put('/:id', ProductController.editProduct); // Handle PUT requests to edit an existing product
 router.get('/list', ProductController.getProducts); // Handle GET requests to retrieve all products
 router.get('/:id', ProductController.getProduct);

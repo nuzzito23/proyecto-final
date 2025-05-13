@@ -1,7 +1,7 @@
 function checkAuth() {
     const token = localStorage.getItem("authToken") || sessionStorage.getItem("authToken");
     if (!token) {
-        window.location.href = "/home.html"; // Change to your login page
+        window.location.href = "/html/home.html"; // Change to your login page
     }
 }
 
@@ -137,4 +137,8 @@ cerrarSesionButton.addEventListener('click', () => {
 function logout() {
     localStorage.removeItem("authToken");
     window.location.href = "login.html"; // Redirigir a la página de inicio de sesión
+}
+
+function toggleMenu() {
+  document.querySelector('.nav-menu').classList.toggle('active');
 }

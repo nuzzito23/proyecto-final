@@ -5,6 +5,7 @@ exports.createProduct = async (req, res) => {
   try {
     const productObject = req.body; // Get product data from request body
     const newProduct = new Product(productObject); // Create a new product instance
+    newProduct.image = `/imgs/${req.file.filename}.${req.file.filename}`
     await newProduct.save(); // Save product to MongoDB
     res.status(201).json({ message: 'Create product successfully', data: newProduct });
   } catch (error) {

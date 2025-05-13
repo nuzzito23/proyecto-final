@@ -1,6 +1,36 @@
-nav {
-  position: relative;
-  background-color: green;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #2c18c2;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-menu li a {
+  color: white;
+  text-decoration: none;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+}
+
+.logo h1 {
+  color: rgb(225, 219, 219);
+  padding: 5px;
+  margin: 5px;
+}
+
+.image-logo {
+  width: 50px;
+  height: 50px;
 }
 
 .header-content {
