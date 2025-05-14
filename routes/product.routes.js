@@ -1,10 +1,10 @@
 const express = require('express');
 const multer = require('multer'); // Import multer for file uploads
 const router = express.Router();
-const ProductController = require('../controllers/products.controller'); // Import the ProductController
+const ProductController = require('../controllers/products_controller'); // Import the ProductController
 
 const storage = multer.diskStorage({
-  destination: "imgs/",
+  destination: "./static/imgs",
   filename: (req, file, cb) => {
     cb(null, Date.now() + "-" + file.originalname);
   },

@@ -57,10 +57,11 @@ async function fetchCatalogo() {
       const catalogItem = document.createElement("div");
       catalogItem.className = "item-catalogo";
       catalogItem.innerHTML = `
+            <div class="item-image">
             <img class="modelos" src="${item.image}" alt="Imagen">
+            </div>
             <div id="${item._id}" class="item-info">  
               <h3>${item.name}</h3>
-              <p>${item.description}</p>
               <p>Precio: $${item.price}</p>
               <p>Stock: ${item.stock}</p>
             </div>
@@ -249,10 +250,10 @@ document.getElementById("product-form").addEventListener("submit", async (event)
   event.preventDefault();
 
   const formData = new FormData();
-  formData.append("name", document.getElementById("name").value);
-  formData.append("description", document.getElementById("description").value);
-  formData.append("price", document.getElementById("price").value);
-  formData.append("stock", document.getElementById("stock").value);
+  formData.append("name", document.getElementById("productName").value);
+  formData.append("description", document.getElementById("productDescription").value);
+  formData.append("price", document.getElementById("productPrice").value);
+  formData.append("stock", document.getElementById("productStock").value);
   formData.append("image", document.getElementById("image").files[0]);
 
   try {
@@ -265,6 +266,7 @@ document.getElementById("product-form").addEventListener("submit", async (event)
     if (response.ok) {
       alert("Producto agregado exitosamente!");
       document.getElementById("product-form").reset();
+      fetchCatalogo(); // Refresh the catalog after adding a new product
     } else {
       alert("Error: " + result.error);
     }

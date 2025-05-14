@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const ventaController = require('../controllers/ventas.controller'); // Import the VentaController
+const ventaController = require('../controllers/ventas_controller'); // Import the VentaController
 
 router.post('/', ventaController.createVenta); // Handle POST requests to create a new venta
 router.get('/list', ventaController.getVentas); // Handle GET requests to retrieve all ventas

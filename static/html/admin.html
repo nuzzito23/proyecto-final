@@ -37,16 +37,12 @@
     <button onclick="openProductModal()" class="add-product-btn">Agregar Producto</button>
   </div>
   <div class="catalogo-container">
-    <div class="pagination-container">
-      <button class="prev-button" onclick="prevPage()">←</button>
-    </div>
+
 
     <div id="catalogo-items">
     </div>
 
-    <div class="pagination-container">
-      <button class="next-button" onclick="nextPage()">→</button>
-    </div>
+
   </div>
 
   </div>
@@ -54,6 +50,26 @@
   <h4>Inversiones Melfi C.A.</h4>
   <div class='ending'>
     <button id="cerrar-sesion">Cerrar sesion</button>
+  </div>
+  <div id="create-product-modal" class="modal">
+    <form id="product-form">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Crear Producto</h2>
+        <div id="productId"></div>
+        <label>Nombre:</label>
+        <input type="text" id="productName">
+        <label>Descripcion:</label>
+        <input type="text" id="productDescription">
+        <label>Precio:</label>
+        <input type="number" id="productPrice">
+        <label>Disponibles:</label>
+        <input type="text" id="productStock">
+        <label for="image">Imagen del producto:</label>
+        <input type="file" id="image" name="image" accept="image/*" required>
+        <button type="submit">Guardar</button>
+      </div>
+    </form>
   </div>
   <script src="/js/admin.js"></script>
 </body>
@@ -73,25 +89,8 @@
     <button onclick="saveChanges()">Guardar</button>
   </div>
 </div>
-<div id="create-product-modal" class="modal">
-  <form id="product-form">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <h2>Crear Producto</h2>
-      <div id="productId"></div>
-      <label>Nombre:</label>
-      <input type="text" id="productName">
-      <label>Descripcion:</label>
-      <input type="text" id="productDescription">
-      <label>Precio:</label>
-      <input type="number" id="productPrice">
-      <label>Disponibles:</label>
-      <input type="text" id="productStock">
-      <label for="image">Imagen del producto:</label>
-      <input type="file" id="image" name="image" accept="image/*" required>
-      <button type="submit">Guardar</button>
-    </div>
-  </form>
-</div>
+
+
+
 
 </html>
