@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const ventaSchema = new Schema({
     user_id: { type: Schema.Types.ObjectId, ref: 'User'},
-    nombre: String,
+    name: String,
     email: String,
     phone: String,
     price: Number,

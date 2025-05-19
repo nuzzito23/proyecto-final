@@ -8,13 +8,22 @@ async function fetchOrders() {
         
         data.data.forEach(order => {
             let row = document.createElement('tr');
+            const products = order.products.map(product => {
+                return {
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    quantity: product.quantity
+                };
+                return ``
+            });
             row.innerHTML = `
-                <td>${order.nombre}</td>
+                <td>${order.name}</td>
                 <td>${order.email}</td>
                 <td>${order.phone}</td>
                 <td>${order.price}</td>
                 <td>${order.address}</td>
-                <td>${JSON.stringify(order.products)}</td>
+                <td>${order.products.join(';')}</td>
             `;
             tableBody.appendChild(row);
         });
