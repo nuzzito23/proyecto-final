@@ -2,6 +2,7 @@ const express = require('express');
 const multer = require('multer'); // Import multer for file uploads
 const router = express.Router();
 const ProductController = require('../controllers/products_controller'); // Import the ProductController
+const {authenticateToken} = require('../shared/middleware/authenticateToken'); // Import the middlewar
 
 const storage = multer.diskStorage({
   destination: "./static/imgs",
@@ -12,10 +13,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage }); // Create a multer instance with the defined storage
 // Route for product registration
-router.post('/', upload.single("image"), ProductController.createProduct); // Handle POST requests to create a new product
-router.put('/:id', ProductController.editProduct); // Handle PUT requests to edit an existing product
-router.get('/list', ProductController.getProducts); // Handle GET requests to retrieve all products
-router.get('/:id', ProductController.getProduct);
-router.delete('/:id', ProductController.deleteProduct); // Handle GET requests to delete a product
+router.post('/', authenticateToken, upload.single("image"), ProductController.createProduct); // Handle POST requests to create a new product
+router.put('/:id',authenticateToken, ProductController.editProduct); // Handle PUT requests to edit an existing product
+router.get('/list',authenticateToken, ProductController.getProducts); // Handle GET requests to retrieve all products
+router.get('/:id',authenticateToken, ProductController.getProduct);
+router.delete('/:id',authenticateToken, ProductController.deleteProduct); // Handle GET requests to delete a product
 
 module.exports = router; // Export the router
