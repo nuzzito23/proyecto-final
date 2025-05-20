@@ -1,4 +1,4 @@
-document.querySelector('#enter').addEventListener('click', function(event) {
+document.querySelector('.enter').addEventListener('click', function(event) {
     event.preventDefault(); //Impedir que el formulario se envíe vacio 
 
     const name = document.getElementById('nombre').value;
