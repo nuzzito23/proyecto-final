@@ -58,13 +58,13 @@
         <h2>Crear Producto</h2>
         <div id="productId"></div>
         <label>Nombre:</label>
-        <input type="text" id="productName">
+        <input type="text" id="name">
         <label>Descripcion:</label>
-        <input type="text" id="productDescription">
+        <input type="text" id="description">
         <label>Precio:</label>
-        <input type="number" id="productPrice">
+        <input type="number" id="price">
         <label>Disponibles:</label>
-        <input type="text" id="productStock">
+        <input type="text" id="stock">
         <label for="image">Imagen del producto:</label>
         <input type="file" id="image" name="image" accept="image/*" required>
         <button type="submit">Guardar</button>
@@ -72,25 +72,22 @@
     </form>
   </div>
   <script src="/js/admin.js"></script>
-</body>
-<div id="editModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <h2>Editar Producto</h2>
-    <div id="productId"></div>
-    <label>Nombre:</label>
-    <input type="text" id="productName">
-    <label>Descripcion:</label>
-    <input type="text" id="productDescription">
-    <label>Precio:</label>
-    <input type="number" id="productPrice">
-    <label>Disponibles:</label>
-    <input type="text" id="productStock">
-    <button onclick="saveChanges()">Guardar</button>
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Editar Producto</h2>
+      <div id="productId"></div>
+      <label>Nombre:</label>
+      <input type="text" id="productName">
+      <label>Descripcion:</label>
+      <input type="text" id="productDescription">
+      <label>Precio:</label>
+      <input type="number" id="productPrice">
+      <label>Disponibles:</label>
+      <input type="text" id="productStock">
+      <button onclick="saveChanges()">Guardar</button>
+    </div>
   </div>
-</div>
-
-
-
+</body>
 
 </html>

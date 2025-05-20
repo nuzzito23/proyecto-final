@@ -64,20 +64,69 @@ body {
   margin-bottom: 25px;
 }
 
-.modelos{
-  width: 100%;
+.modelos {
+  width: auto;
   height: 200px;
+  width: 250px;
+  object-fit: fill;
 }
 
-.item-catalogo{
+.item-catalogo {
   display: flex;
   flex-direction: column;
-  border: 2.5px solid black;
-  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  /* border: 2.5px solid black; */
+  /* border-radius: 20px; */
   overflow: hidden;
-  width: 600px;
-  height: 400px;
+  width: 250px;
+  text-align: center;
+  height: 350px;
+  /* min-height: 450px;
+  max-width: 450px; */
+  gap: 20px;
+  position: relative;
+  /* Space between item content and buttons */
 }
+
+.item-catalogo h3, .item-catalogo p {
+  margin: 0; /* Elimina los márgenes para que todo encaje bien */
+  white-space: nowrap; /* Prevents text from wrapping */
+  overflow: hidden; /* Hides overflowed content */
+  text-overflow: ellipsis; /* Adds the ellipsis */
+  width: 200px; /* Adjust width as needed */
+}
+
+.item-image {
+  width: 250px;
+  height: 200px;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: left; */
+  /* overflow: hidden; */
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  gap: 2px;
+  margin: 5px;
+  padding: 5px;
+  position: absolute;
+  top: 200px
+}
+
+.item-info h3,
+.item-info p {
+  margin: 0;
+  padding: 0;
+  line-height: 1.1;
+  justify-items: flex-start;
+}
+
 
 .catalogo{
   width: auto;
@@ -85,6 +134,12 @@ body {
   display: flex;
   flex-direction: row;
   gap: 1rem;
+}
+
+#catalogo-items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+  gap: 15px; /* Espacio entre elementos */
 }
 
 h2{
@@ -128,12 +183,27 @@ p{
   padding: 0.5rem;
 }
 
-#catalogo-container{
-  width: auto;
-  height: 10%;
+.buttons-container {
   display: flex;
   flex-direction: row;
-  gap: 1rem;
+  gap: 5px;
+  align-items: center;
+  min-height: 100px;
+  position: absolute;
+  bottom: 0;
+}
+
+.catalogo-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* Space between items and buttons */
+  align-items: center;
+  width: auto;
+  margin: auto;
+  scroll-behavior: smooth;
+  overflow: hidden;
 }
 
 /* Responsive Behavior */

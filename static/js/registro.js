@@ -58,9 +58,64 @@ document.querySelector('#enter').addEventListener('click', function(event) {
         return;
     }
 
-    alert('Inicio de sesión exitoso.');
+    const login = async (email,password) => {
+const response = await fetch('http://localhost:3000/api/users/login', {
+    method: 'POST',
+    headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+        email: email,
+        password: password
+    })
+});
+
+if (!response.ok) {
+    console.error('Error en el login:', response.status);
+    return;
+}
+
+const data = await response.json();
+saveToken(data.token); // Guardar el token en localStorage
+redirectAfterLogin(data); // Redirigir después de iniciar sesión
+console.log('Login exitoso:', data);
+}
+//Enviando el formulario
+    register(name,phone,email,address,city,country,password)
+    alert('Registro exitoso.');
     //Enviando el formulario
 });
+
+const register = async (name,phone,email,address,city,country,password) => {
+const response = await fetch('http://localhost:3000/api/users/register', {
+    method: 'POST',
+    headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+        name: name,
+        phone: phone,
+        email: email,
+        address: address,
+        city: city,
+        country: country,
+        password: password
+    })
+});
+
+if (!response.ok) {
+    console.error('Error en el registro:', response.status);
+    return;
+}
+
+const data = await response.json();
+saveToken(data.token); // Guardar el token en localStorage
+redirectAfterRegister(data); // Redirigir después de iniciar sesión
+console.log('Login exitoso:', data);
+}
+//Enviando el formulario
 
 document.addEventListener('DOMContentLoaded', () => {
     const passwordButton = document.getElementsByClassName('new-password');
@@ -70,3 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+function redirectAfterRegister() {
+    window.location.href = "./login.html"; // Change to your logged-in page
+}

@@ -1,6 +1,13 @@
 async function fetchOrders() {
     try {
-        let response = await fetch('http://localhost:3000/api/ventas/list'); // Replace with your backend URL
+        const token = localStorage.getItem("authToken"); // Adjust the key name if needed
+
+        let response = await fetch('http://localhost:3000/api/ventas/list', {
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+            }
+        }); // Replace with your backend URL
         let data = await response.json();
         
         let tableBody = document.getElementById('ordersBody');

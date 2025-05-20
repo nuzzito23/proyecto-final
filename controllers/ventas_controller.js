@@ -31,8 +31,11 @@ exports.createVenta = async (req, res) => {
 
 exports.getVentas = async (req, res) => {
   try {
+    const user = await User.findOne({ _id: req.user.id }).lean(); // Fetch user from MongoDB
     const result=[]
-    const ventas = await Venta.find().lean(); // Fetch all ventas from MongoDB
+    const ventas = await Venta.find({
+      ...req.user.role === 'user' ? { user_id: user._id } : {},
+    }).lean(); // Fetch all ventas from MongoDB
     for (const venta of ventas) {
       const productIds = venta.products.map(product => {
         return product.id_producto.toString();

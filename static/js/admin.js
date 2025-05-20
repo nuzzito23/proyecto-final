@@ -1,5 +1,6 @@
 const overlay = document.createElement("div");
 overlay.className = "modal-overlay";
+const modal = document.getElementById("editModal"); // Make sure this matches your modal's ID
 document.body.appendChild(overlay);
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -30,27 +31,18 @@ let currentPage = 0;
 const itemsPerPage = 5; 
 async function fetchCatalogo() {
   try {
-    const response = await fetch("http://localhost:3000/api/products/list"); // Adjust the URL as needed
+    const token = localStorage.getItem("authToken"); // Adjust the key name if needed
+    const response = await fetch("http://localhost:3000/api/products/list", {
+      headers: {
+          "Authorization": `Bearer ${token}`, 
+          "Content-Type": "application/json"
+      }
+    }); // Adjust the URL as needed
     const data = await response.json();
 
     // Assume data is an array of catalog items
     const catalogoContainer = document.getElementById("catalogo-items");
-    // const paginationContainer = document.getElementById("pagination-controls"); 
     catalogoContainer.innerHTML = ""; // Clear the container
-    // paginationContainer.innerHTML = "";
-
-    // Calculate start and end index
-    // const startIndex = currentPage * itemsPerPage;
-    // let endIndex = startIndex + itemsPerPage;
-
-    // // If we reach the end, loop back to start
-    // if (startIndex >= data.data.length) {
-    //   currentPage = 0;
-    //   endIndex = itemsPerPage;
-    // }
-
-    // Slice data for the current page
-    // const currentItems = data.data.slice(startIndex, endIndex);
     const currentItems = data.data;
 
     currentItems.forEach((item) => {
@@ -71,25 +63,7 @@ async function fetchCatalogo() {
             </div>
         `;
       catalogoContainer.appendChild(catalogItem);
-    });
-
-    // const prevButton = document.querySelector("button");
-    // prevButton.textContent = "←";
-    // prevButton.onclick = () => {
-    //   currentPage = (currentPage === 0) ? Math.ceil(data.data.length / itemsPerPage) - 1 : currentPage - 1;
-    //   fetchCatalogo();
-    // };
-
-    // const nextButton = document.createElement("button");
-    // nextButton.textContent = "→";
-    // nextButton.onclick = () => {
-    //   currentPage++;
-    //   fetchCatalogo();
-    // };
-
-    // paginationContainer.appendChild(prevButton);
-    // paginationContainer.appendChild(nextButton);
-  
+    });  
   } catch (error) {
     console.error("Error fetching catalog:", error);
   }
@@ -198,6 +172,7 @@ async function fetchProductDetails(productId) {
       },
     );
     const data = await response.json();
+    console.log(response.ok, data.data.name);
     if (response.ok) {
       document.getElementById("productName").value = data.data.name;
       document.getElementById("productPrice").value = data.data.price;
@@ -250,10 +225,10 @@ document.getElementById("product-form").addEventListener("submit", async (event)
   event.preventDefault();
 
   const formData = new FormData();
-  formData.append("name", document.getElementById("productName").value);
-  formData.append("description", document.getElementById("productDescription").value);
-  formData.append("price", document.getElementById("productPrice").value);
-  formData.append("stock", document.getElementById("productStock").value);
+  formData.append("name", document.getElementById("name").value);
+  formData.append("description", document.getElementById("description").value);
+  formData.append("price", document.getElementById("price").value);
+  formData.append("stock", document.getElementById("stock").value);
   formData.append("image", document.getElementById("image").files[0]);
 
   try {

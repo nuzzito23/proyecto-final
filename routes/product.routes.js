@@ -15,7 +15,7 @@ const upload = multer({ storage }); // Create a multer instance with the defined
 // Route for product registration
 router.post('/', authenticateToken, upload.single("image"), ProductController.createProduct); // Handle POST requests to create a new product
 router.put('/:id',authenticateToken, ProductController.editProduct); // Handle PUT requests to edit an existing product
-router.get('/list',authenticateToken, ProductController.getProducts); // Handle GET requests to retrieve all products
+router.get('/list', ProductController.getProducts); // Handle GET requests to retrieve all products
 router.get('/:id',authenticateToken, ProductController.getProduct);
 router.delete('/:id',authenticateToken, ProductController.deleteProduct); // Handle GET requests to delete a product
 

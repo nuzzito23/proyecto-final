@@ -72,20 +72,31 @@ const carrito = [];
         // Function to fetch data from the backend
 async function fetchCatalogo() {
     try {
-      const response = await fetch('http://localhost:3000/api/products/list'); // Adjust the URL as needed
+      const response = await fetch('http://localhost:3000/api/products/list',{
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem("authToken")}`,
+        },
+      }); // Adjust the URL as needed
       const data = await response.json();
 
       // Assume `data` is an array of catalog items
       const catalogoContainer = document.getElementById('catalogo-container');
       catalogoContainer.innerHTML = ''; // Clear the container
-      
+      const currentItems = data.data;
+
       data.data.forEach(item => {
         const catalogItem = document.createElement('div');
         catalogItem.className = 'item-catalogo';
         catalogItem.innerHTML = `
-          <img class="modelos" src="${item.image}" alt="Imagen">
-          <h3>${item.name}</h3>
-          <p>${item.description}</p>
+          <div class="item-image">
+            <img class="modelos" src="${item.image}" alt="Imagen">
+            </div>
+            <div id="${item._id}" class="item-info">  
+              <h3>${item.name}</h3>
+              <p>Precio: $${item.price}</p>
+              <p>Stock: ${item.stock}</p>
+            </div>
           <button class="add">Agregar al carrito</button>
         `;
         catalogoContainer.appendChild(catalogItem);
