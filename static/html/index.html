@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,56 +10,55 @@
 <body>
   <nav class="navbar">
     <div class="logo">
-      <img class="image-logo" src="/imgs/im-logo.jpg" title="logo inversiones melfi">
+      <img class="image-logo" src="/imgs/im-logo.jpg" alt="Logo Inversiones Melfi">
       <h1>Inversiones Melfi C.A.</h1>
     </div>
     <ul class="nav-menu">
       <li><a href="/html/compras_historial_cliente.html">Historial de Compras</a></li>
-      <li><a id="cerrar-sesion" href="/html/login.html">Cerrar Sesion</a></li>
+      <li><a id="cerrar-sesion" href="/html/login.html">Cerrar Sesión</a></li>
     </ul>
-    <div class="hamburger" onclick="toggleMenu()">
-      ☰
-    </div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
   </nav>
-</div>
-<div class="cart-counter">
+
+  <div class="cart-counter">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="shopping-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
-                </svg>
-                <span id="cart-count">0</span>
-                <div id="cart-items" class="cart-items" style="display: none; background: white; border: 1px solid #ccc; padding: 10px; z-index: 100; max-width: 300px;">
-                    <p>Carrito vacío</p>
-                </div>
-            </div>
-        </header>
-    </nav>
-    <section>
-  <h1>Encuentra tu calzado ideal</h1>
-  <p>Somos una empresa familiar de calzado para todas las edades</p>
-  <div id="portada">
-    <img src="/imgs/zapateria.jpg">
-    <img src="/imgs/zapateria.jpg">
-  </div>
-  </div>
-  <main class="contenido">
-    <h2>Catalogo</h2>
-  </main>
-  <div class="catalogo-container">
-
-
-    <div id="catalogo-items">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+    </svg>
+    <span id="cart-count">0</span>
+    <div id="cart-items" class="cart-items" style="display: none; background: white; border: 1px solid #ccc; padding: 10px; z-index: 100; max-width: 300px;">
+      <p>Carrito vacío</p>
     </div>
-
-
+    <div style="display: none;" id="paypal-button-container"></div>
+    <p id="result-message"></p>
   </div>
 
-  </div>
-  </div>
-  <h4>Inversiones Melfi C.A.</h4>
-  <div class='ending'>
-    <button id="cerrar-sesion">Cerrar sesion</button>
-  </div>
+  <section>
+    <h1>Encuentra tu calzado ideal</h1>
+    <p>Somos una empresa familiar de calzado para todas las edades</p>
+    <div id="portada">
+      <img src="/imgs/zapateria.jpg" alt="Zapatería">
+      <img src="/imgs/zapateria.jpg" alt="Zapatería">
+    </div>
+  </section>
+
+  <main class="contenido">
+    <h2>Catálogo</h2>
+    <div class="catalogo-container">
+      <div id="catalogo-items"></div>
+    </div>
+  </main>
+
+  <footer>
+    <h4>Inversiones Melfi C.A.</h4>
+    <div class="ending">
+      <button id="cerrar-sesion">Cerrar sesión</button>
+    </div>
+  </footer>
+  <script
+            src="https://www.paypal.com/sdk/js?client-id=test&buyer-country=US&currency=USD&components=buttons&enable-funding=venmo,paylater,card"
+            data-sdk-integration-source="developer-studio"
+        ></script>
   <script src="/js/index.js"></script>
+  
 </body>
-
 </html>
