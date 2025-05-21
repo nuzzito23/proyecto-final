@@ -59,7 +59,7 @@ app.use('/api/ventas', ventaRoute);
 // PayPal Order Creation Route
 app.post("/api/orders", async (req, res) => {
     try {
-        const { cart } = req.body;
+        const { cart, total_price } = req.body;
         const collect = {
             body: {
                 intent: "CAPTURE",
@@ -67,11 +67,11 @@ app.post("/api/orders", async (req, res) => {
                     {
                         amount: {
                             currencyCode: "USD",
-                            value: "100",
+                            value: String(total_price),
                             breakdown: {
                                 itemTotal: {
                                     currencyCode: "USD",
-                                    value: "100",
+                                    value: String(total_price),
                                 },
                             },
                         },

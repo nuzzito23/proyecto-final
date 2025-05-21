@@ -283,12 +283,17 @@ const paypalButtons = window.paypal.Buttons({
                 // use the "body" param to optionally pass additional order information
                 // like product ids and quantities
                 body: JSON.stringify({
-                cart: cart.map(product => ({
-                id: product.id, // ID del producto
-                name: product.name, // Nombre del producto
-                quantity: 1, // Ajusta según lógica de cantidad
-                price: product.price.toFixed(2), // Precio correcto con dos decimales
+                    cart: cart.map((product) => ({
+                        id: product.id, // ID del producto
+                        name: product.name, // Nombre del producto
+                        quantity: product.quantity, // Ajusta según lógica de cantidad
+                        price: product.price.toFixed(2), // Precio correcto con dos decimales
                     })),
+                    total_price: cart.reduce(
+                        (sum, product) =>
+                            sum + Number(product.price) ,
+                        0,
+                    ),
                 }),
             });
 
