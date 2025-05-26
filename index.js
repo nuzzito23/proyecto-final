@@ -1,4 +1,6 @@
 require('dotenv').config();
+const {authenticateToken} = require('./shared/middleware/authenticateToken'); // Import the middleware
+const ventaController = require('./controllers/ventas_controller');
 const cors = require('cors');
 const { connect } = require('./db/mongo');
 const express = require('express');
@@ -57,7 +59,7 @@ app.use('/api/products', productRoute);
 app.use('/api/ventas', ventaRoute);
 
 // PayPal Order Creation Route
-app.post("/api/orders", async (req, res) => {
+app.post("/api/orders",authenticateToken, async (req, res) => {
     try {
         const { cart, total_price } = req.body;
         const collect = {
@@ -92,6 +94,16 @@ app.post("/api/orders", async (req, res) => {
         };
 
         const { body, ...httpResponse } = await ordersController.createOrder(collect);
+        const venta = await ventaController.createVenta({
+            user_id: req.user.id,
+            postal_code: req.body.postal_code,
+            products: cart.map(item => ({
+                id_producto: item.id,
+                cantidad: item.quantity,
+                price: item.price,
+            })),
+            price: total_price,
+        });
         res.status(httpResponse.statusCode).json(JSON.parse(body));
     } catch (error) {
         console.error("Failed to create order:", error);

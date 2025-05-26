@@ -279,6 +279,9 @@ const paypalButtons = window.paypal.Buttons({
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    "Authorization": `Bearer ${
+                        localStorage.getItem("authToken")
+                    }`,
                 },
                 // use the "body" param to optionally pass additional order information
                 // like product ids and quantities
