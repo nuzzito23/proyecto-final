@@ -72,11 +72,14 @@ document.getElementById("catalogo-items").addEventListener("click", (event) => {
         const productoPrecio = parseFloat(
             item.querySelector(".price-unit").textContent.split("$")[1],
         );
+        const productoId = item.querySelector(".item-info").id;
 
         cart.push({
             name: productoNombre,
             image: productoImagen,
             price: productoPrecio,
+            cantidad: 1,
+            productId: productoId,
         });
         cartCountElement.textContent = cart.length;
 
@@ -287,7 +290,7 @@ const paypalButtons = window.paypal.Buttons({
                 // like product ids and quantities
                 body: JSON.stringify({
                     cart: cart.map((product) => ({
-                        id: product.id, // ID del producto
+                        id: product.productId, // ID del producto
                         name: product.name, // Nombre del producto
                         quantity: product.quantity, // Ajusta según lógica de cantidad
                         price: product.price.toFixed(2), // Precio correcto con dos decimales

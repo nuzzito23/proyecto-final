@@ -358,6 +358,12 @@ p {
     /* Show when active */
   }
 
+  #catalogo-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 3 columnas */
+  gap: 15px; /* Espacio entre elementos */
+}
+
   .hamburger {
     display: block;
     /* Show icon */
@@ -419,4 +425,13 @@ p {
   flex-direction: column;
   align-items: center;
   margin: 1em;
+}
+
+
+@media (max-width: 400px) {
+  #catalogo-items {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* 3 columnas */
+  gap: 15px; /* Espacio entre elementos */
+}
 }

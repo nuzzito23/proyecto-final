@@ -23,6 +23,12 @@ body {
   text-decoration: none;
 }
 
+.hamburger {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
 .logo {
   display: flex;
   flex-direction: row;
@@ -52,21 +58,70 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: row;
+  margin-bottom: 25px;
 }
 
-.modelos{
-  width: 100%;
+.modelos {
+  width: auto;
   height: 200px;
+  width: 250px;
+  object-fit: fill;
 }
 
-.item-catalogo{
+.item-catalogo {
   display: flex;
   flex-direction: column;
-  border: 2.5px solid black;
-  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  /* border: 2.5px solid black; */
+  /* border-radius: 20px; */
   overflow: hidden;
-  width: 600px;
-  height: 400px;
+  width: 250px;
+  text-align: center;
+  height: 350px;
+  /* min-height: 450px;
+  max-width: 450px; */
+  gap: 20px;
+  position: relative;
+  /* Space between item content and buttons */
+}
+
+.item-catalogo h3, .item-catalogo p {
+  margin: 0; /* Elimina los márgenes para que todo encaje bien */
+  white-space: nowrap; /* Prevents text from wrapping */
+  overflow: hidden; /* Hides overflowed content */
+  text-overflow: ellipsis; /* Adds the ellipsis */
+  width: 200px; /* Adjust width as needed */
+}
+
+.item-image {
+  width: 250px;
+  height: 200px;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: left; */
+  /* overflow: hidden; */
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  gap: 2px;
+  margin: 5px;
+  padding: 5px;
+  position: absolute;
+  top: 200px
+}
+
+.item-info h3,
+.item-info p {
+  margin: 0;
+  padding: 0;
+  line-height: 1.1;
+  justify-items: flex-start;
 }
 
 .catalogo{
@@ -83,6 +138,12 @@ body {
   display: flex;
   flex-direction: row;
   gap: 1rem;
+}
+
+#catalogo-items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+  gap: 15px; /* Espacio entre elementos */
 }
 
 h2{
@@ -109,4 +170,46 @@ p{
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+@media (max-width: 700px) {
+  .nav-menu {
+    display: none;
+    /* Hide menu */
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: #444;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .nav-menu.active {
+    display: flex;
+    /* Show when active */
+  }
+
+  #catalogo-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 3 columnas */
+  gap: 15px; /* Espacio entre elementos */
+}
+
+  .hamburger {
+    display: block;
+    /* Show icon */
+  }
+
+  .logo h1 {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  #catalogo-items {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* 3 columnas */
+  gap: 15px; /* Espacio entre elementos */
+}
 }

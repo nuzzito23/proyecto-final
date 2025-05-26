@@ -23,16 +23,23 @@ async function fetchCatalogo() {
       const data = await response.json();
 
       // Assume `data` is an array of catalog items
-      const catalogoContainer = document.getElementById('catalogo-container');
+      const catalogoContainer = document.getElementById('catalogo-items');
       catalogoContainer.innerHTML = ''; // Clear the container
       
       data.data.forEach(item => {
         const catalogItem = document.createElement('div');
         catalogItem.className = 'item-catalogo';
         catalogItem.innerHTML = `
-          <img class="modelos" src="${item.image}" alt="Imagen">
-          <h3>${item.name}</h3>
-          <p>${item.description}</p>
+            <div class="item-image">
+                <img class="modelos" src="${item.image}" alt="Imagen">
+            </div>
+            <div id="${item._id}" class="item-info">  
+              <h3 class="item-name">${item.name}</h3>
+              <p class="price-unit">Precio: $${item.price}</p>
+              <p>Stock: ${
+                item.stock !== undefined ? item.stock : "no disponible"
+            }</p>
+            </div>
         `;
         catalogoContainer.appendChild(catalogItem);
       });
