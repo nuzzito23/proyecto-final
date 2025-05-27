@@ -16,15 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Function to fetch data from the backend
+// Función para obtener datos del backend
 async function fetchCatalogo() {
     try {
-      const response = await fetch('http://localhost:3000/api/products/list'); // Adjust the URL as needed
+      const response = await fetch('http://localhost:3000/api/products/list'); 
       const data = await response.json();
 
-      // Assume `data` is an array of catalog items
       const catalogoContainer = document.getElementById('catalogo-items');
-      catalogoContainer.innerHTML = ''; // Clear the container
+      catalogoContainer.innerHTML = ''; 
       
       data.data.forEach(item => {
         const catalogItem = document.createElement('div');
@@ -48,7 +47,6 @@ async function fetchCatalogo() {
     }
   }
 
-  // Call the function on page load
   fetchCatalogo();
 
   function toggleMenu() {

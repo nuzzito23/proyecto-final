@@ -1,3 +1,4 @@
+// Verifica que el token enviado en la peticion sea válido y no haya expirado 
 const jwt = require("jsonwebtoken");
 
 exports.authenticateToken = (req, res, next) => {

@@ -1,6 +1,6 @@
 const ventaController = require("./ventas_controller");
 
-// Import PayPal SDK
+// Importar PayPal SDK 
 const {
     ApiError,
     Client,
@@ -10,7 +10,7 @@ const {
     PaymentsController,
 } = require("@paypal/paypal-server-sdk");
 
-// Initialize PayPal Client
+// Autenticar cliente con PayPal
 const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET } = process.env;
 const client = new Client({
     clientCredentialsAuthCredentials: {
@@ -29,6 +29,7 @@ const client = new Client({
 const ordersController = new OrdersController(client);
 const paymentsController = new PaymentsController(client);
 
+//esto para poder realizar el pago en paypal
 exports.paypalCreateOrder = async (req, res) => {
     try {
         const { cart, total_price } = req.body;
@@ -66,7 +67,8 @@ exports.paypalCreateOrder = async (req, res) => {
         const { body, ...httpResponse } = await ordersController.createOrder(
             collect,
         );
-        const venta = await ventaController.createVenta({
+        //esto para crear la venta en la base de datos
+        const venta = await ventaController.createVenta({ 
             body: {
                 user_id: req.user.id,
                 postal_code: req.body.postal_code,
@@ -86,6 +88,7 @@ exports.paypalCreateOrder = async (req, res) => {
     }
 };
 
+//esto forma parte del SDK de PayPal y se usa para capturar el pago
 exports.paypalCaptureOrder = async (req, res) => {
     try {
         const { orderID } = req.params;

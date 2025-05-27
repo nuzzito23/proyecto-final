@@ -1,3 +1,4 @@
+// cuenta los productos agregados al carrito
 let cartCount = 0;
 const cart = [];
 const cartCountElement = document.getElementById("cart-count");
@@ -6,16 +7,16 @@ function checkAuth() {
     const token = localStorage.getItem("authToken") ||
         sessionStorage.getItem("authToken");
     if (!token) {
-        window.location.href = "/html/home.html"; // Change to your login page
+        window.location.href = "/html/home.html"; 
     }
 }
 
-// Call this function on page load to enforce authentication
+// Llame a esta función al cargar la página para aplicar la autenticación
 checkAuth();
 
 const carrito = [];
 
-// Function to fetch data from the backend
+// Función para obtener datos del backend
 async function fetchCatalogo() {
     try {
         const response = await fetch(
@@ -28,14 +29,14 @@ async function fetchCatalogo() {
                     }`,
                 },
             },
-        ); // Adjust the URL as needed
+        ); 
         const data = await response.json();
 
-        // Assume data is an array of catalog items
         const catalogoContainer = document.getElementById("catalogo-items");
-        catalogoContainer.innerHTML = ""; // Clear the container
+        catalogoContainer.innerHTML = ""; 
         const currentItems = data.data;
 
+        // muestra cada uno de los items del catalogo
         currentItems.forEach((item) => {
             const catalogItem = document.createElement("div");
             catalogItem.className = "item-catalogo";
@@ -61,7 +62,7 @@ async function fetchCatalogo() {
     }
 }
 
-// Call the function on page load
+//
 fetchCatalogo();
 
 document.getElementById("catalogo-items").addEventListener("click", (event) => {
@@ -89,28 +90,6 @@ document.getElementById("catalogo-items").addEventListener("click", (event) => {
         console.log("Carrito:", cart);
     }
 });
-
-// function actualizarCarrito() {
-//     const total = cart.reduce((sum, product) => sum + product.price, 0);
-//     cartItemsElement.innerHTML = cart.length
-//         ? cart.map((product) => `
-//             <div style="display: flex; align-items: center; margin-bottom: 10px;">
-//                 <img src="${product.image}" alt="${product.name}" style="width: 50px; height: 50px; margin-right: 10px;">
-//                 <div>
-//                     <p style="margin: 0;">${product.name}</p>
-//                     <p style="margin: 0;">Precio: $${product.price}</p>
-//                 </div>
-//             </div>
-//         `).join("") +
-//             `<p style="font-weight: bold; margin-top: 10px;">Total a pagar: $${
-//                 total.toFixed(2)
-//             }</p>`
-//         : "<p>Carrito vacío</p>";
-
-//     // Mostrar el carrito cuando hay productos
-//     // cartItemsElement.style.display = cart.length ? "block" : "none";
-//     // paypalButtonContainer.style.display = cart.length ? "block" : "none"
-// }
 
 document.querySelector(".shopping-icon").addEventListener("click", () => {
     const cartItemsElement = document.getElementById("cart-items");
@@ -173,40 +152,6 @@ function actualizarCarrito() {
     }
 }
 
-
-// document.querySelectorAll(".add").forEach((button) => {
-//     button.addEventListener("click", () => {
-//         const item = button.parentElement;
-//         const productoNombre = item.querySelector("h3").textContent;
-//         const productoImagen = item.querySelector("img").src;
-//         const productoPrecio = parseFloat(
-//             item.querySelector(".price-unit").textContent.split("$")[1],
-//         );
-
-//         cart.push({
-//             name: productoNombre,
-//             image: productoImagen,
-//             price: productoPrecio,
-//         });
-//         cartCountElement.textContent = cart.length;
-
-//         //Actualzando la visuaizacion de articulos del carrito
-//         const total = cart.reduce((sum, product) => sum + product.price, 0);
-//         cartItemsElement.innerHTML = cart.map((product) => `
-//             <div style="display: flex; align-items: center; margin-bottom: 10px;">
-//                 <img src="${product.image}" alt="${product.name}" style="width: 50px; height: 50px; margin-right: 10px;">
-//                 <div>
-//                     <p style="margin: 0;">${product.name}</p>
-//                     <p style="margin: 0;">Precio: $${product.price}</p>
-//                 </div>
-//             </div>
-//         `).join("") +
-//             `<p style="font-weight: bold; margin-top: 10px;">Total a pagar: $${
-//                 total.toFixed(2)
-//             }</p>`;
-//     });
-// });
-
 //Mostrar los articulos del carrito al pasar el cursor
 document.querySelector(".cart-counter").addEventListener("mouseenter", () => {
     cartItemsElement.style.display = cart.length ? "block" : "none";
@@ -214,47 +159,6 @@ document.querySelector(".cart-counter").addEventListener("mouseenter", () => {
 
 // Call the function on page load
 fetchCatalogo();
-
-// document.getElementById("catalogo-container").addEventListener(
-//     "click",
-//     (event) => {
-//         if (event.target.classList.contains("add")) {
-//             const item = event.target.parentElement;
-//             const productoNombre = item.querySelector("h3").textContent;
-//             const productoImagen = item.querySelector("img").src;
-//             const productoPrecio = parseFloat(
-//                 item.querySelector(".price-unit").textContent.split("$")[1],
-//             );
-
-//             cart.push({
-//                 name: productoNombre,
-//                 image: productoImagen,
-//                 price: productoPrecio,
-//             });
-//             cartCountElement.textContent = cart.length;
-
-//             // Updating cart visualization
-//             const total = cart.reduce((sum, product) => sum + product.price, 0);
-//             cartItemsElement.innerHTML = cart.map((product) => `
-//             <div style="display: flex; align-items: center; margin-bottom: 10px;">
-//                 <img src="${product.image}" alt="${product.name}" style="width: 50px; height: 50px; margin-right: 10px;">
-//                 <div>
-//                     <p style="margin: 0;">${product.name}</p>
-//                     <p style="margin: 0;">Precio: $${product.price}</p>
-                    
-//                 </div>
-//             </div>
-//         `).join("") +
-//                 `<p style="font-weight: bold; margin-top: 10px;">Total a pagar: $${
-//                     total.toFixed(2)
-//                 }</p>;
-//         <button>Pagar</button>`;
-
-//             alert(${productoNombre} agregado al carrito.);
-//             console.log("Carrito:", cart);
-//         }
-//     },
-// );
 
 document.getElementById("cerrar-sesion").addEventListener("click", () => {
     localStorage.removeItem("authToken"); // Remove token from local storage
@@ -274,7 +178,7 @@ const paypalButtons = window.paypal.Buttons({
         label: "paypal",
     },
    message: {
-        amount: cart.reduce((sum, product) => sum + product.price * product.quantity, 0).toFixed(2),
+        amount: cart.reduce((sum, product) => sum + product.price * product.quantity, 0).toFixed(2), // sumatoria total del precio de todos los productos agregados al carrito
     },
    async createOrder() {
         try {
@@ -286,8 +190,8 @@ const paypalButtons = window.paypal.Buttons({
                         localStorage.getItem("authToken")
                     }`,
                 },
-                // use the "body" param to optionally pass additional order information
-                // like product ids and quantities
+                // Utilice el parámetro "body" para pasar opcionalmente información adicional del pedido.
+                // identificadores de products ids and quantities
                 body: JSON.stringify({
                     cart: cart.map((product) => ({
                         id: product.productId, // ID del producto
@@ -381,7 +285,7 @@ const paypalButtons = window.paypal.Buttons({
 paypalButtons.render("#paypal-button-container");
 
 
-// Example function to show a result to the user. Your site's UI library can be used instead.
+// Función de ejemplo para mostrar un resultado al usuario. Se puede usar la biblioteca de interfaz de usuario de su sitio.
 function resultMessage(message) {
     const container = document.querySelector("#result-message");
     container.innerHTML = message;

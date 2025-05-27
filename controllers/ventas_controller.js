@@ -3,6 +3,7 @@ const Product = require('../models/product');
 const User = require('../models/user');
 const mongoose = require('mongoose'); // Import mongoose for MongoDB operations
 
+//Crear venta
 exports.createVenta = async (req, res) => {
   try {
     const {user_id, postal_code, products, price} = req.body; // Get venta data from request body
@@ -36,6 +37,7 @@ exports.createVenta = async (req, res) => {
   }
 }
 
+//Obtener lista de ventas
 exports.getVentas = async (req, res) => {
   try {
     const user = await User.findOne({ _id: req.user.id }).lean(); // Fetch user from MongoDB
@@ -76,6 +78,7 @@ exports.getVentas = async (req, res) => {
   }
 }
 
+// Obtener una venta por ID
 exports.getVenta = async (req, res) => {
   try {
     const venta = await venta.findOne({_id: req.params.id}); // Fetch all ventas from MongoDB

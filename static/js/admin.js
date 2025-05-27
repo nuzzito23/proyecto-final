@@ -1,6 +1,6 @@
 const overlay = document.createElement("div");
 overlay.className = "modal-overlay";
-const modal = document.getElementById("editModal"); // Make sure this matches your modal's ID
+const modal = document.getElementById("editModal"); 
 document.body.appendChild(overlay);
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
       : "block";
   });
 
-  // Show sales history
+  // muestra el historial de ventas al hacer clic en el botón
   salesHistoryButton.addEventListener("click", () => {
     salesHistorySection.style.display = "block";
     salesHistorySection.innerHTML = `
@@ -26,25 +26,26 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
   });
 });
-// Function to fetch data from the backend
+// Función para mostrar el modal de edición
 let currentPage = 0;
 const itemsPerPage = 5; 
 async function fetchCatalogo() {
   try {
-    const token = localStorage.getItem("authToken"); // Adjust the key name if needed
+    const token = localStorage.getItem("authToken"); 
     const response = await fetch("http://localhost:3000/api/products/list", {
       headers: {
           "Authorization": `Bearer ${token}`, 
           "Content-Type": "application/json"
       }
-    }); // Adjust the URL as needed
+    }); 
     const data = await response.json();
 
-    // Assume data is an array of catalog items
+    
     const catalogoContainer = document.getElementById("catalogo-items");
     catalogoContainer.innerHTML = ""; // Clear the container
     const currentItems = data.data;
 
+    // renderizando los elementos del catalogo
     currentItems.forEach((item) => {
       const catalogItem = document.createElement("div");
       catalogItem.className = "item-catalogo";
@@ -69,21 +70,20 @@ async function fetchCatalogo() {
   }
 }
 
-// Call the function on page load
 fetchCatalogo();
 
 const cerrarSesionButton = document.getElementById("cerrar-sesion");
 cerrarSesionButton.addEventListener("click", () => {
-  localStorage.removeItem("authToken"); // Remove token from local storage
-  window.location.href = "./login.html"; // Redirect to login page
-  logout(); // Call the logout function
+  localStorage.removeItem("authToken"); // Elimina el token del almacenamiento local
+  window.location.href = "./login.html"; // redirecciona a la página de inicio de sesión
+  logout(); // Llama a la función de cierre de sesión
 });
 function logout() {
   localStorage.removeItem("authToken");
   window.location.href = "login.html"; // Redirigir a la página de inicio de sesión
 }
 
-// Close modal when clicking outside
+// Cierrar el modal al hacer clic en el overlay
 overlay.addEventListener("click", closeModal);
 
 async function openModal(productId) {
@@ -98,12 +98,13 @@ function closeModal() {
   overlay.style.display = "none";
 }
 
+// para cuando se vaya a editar algun producto
 async function saveChanges() {
   const name = document.getElementById("productName").value;
   const description = document.getElementById("productDescription").value;
   const price = document.getElementById("productPrice").value;
   const stock = document.getElementById("productStock").value;
-  const productId = document.getElementById("productId").value; // Assuming you have a hidden input for product ID
+  const productId = document.getElementById("productId").value; 
   const productData = {
     name,
     description,
@@ -123,17 +124,18 @@ window.addEventListener("click", function (event) {
   }
 });
 
+// desplegar el menu hamburguesa
 function toggleMenu() {
   document.querySelector('.nav-menu').classList.toggle('active');
 }
 
 async function deleteProduct(productId) {
-  // Show confirmation modal
+  // Muestra una confirmación antes de eliminar el producto
   const confirmation = confirm(
     "¿Estás seguro de que deseas eliminar este producto?",
   );
   if (!confirmation) {
-    return; // Exit if the user cancels
+    return; // Sale si el usuario cancela
   }
 
   try {
@@ -149,7 +151,7 @@ async function deleteProduct(productId) {
     );
 
     if (response.ok) {
-      await fetchCatalogo(); // Refresh the catalog after deletion
+      await fetchCatalogo(); // Actualiza el catálogo después de la eliminación
       alert("Producto eliminado exitosamente");
     } else {
       alert("Error al eliminar el producto");
@@ -159,6 +161,7 @@ async function deleteProduct(productId) {
   }
 }
 
+// trae llenos los campos con lo que ya tenian para luego editar los productos
 async function fetchProductDetails(productId) {
   try {
     const response = await fetch(
@@ -179,7 +182,7 @@ async function fetchProductDetails(productId) {
       document.getElementById("productDescription").value =
         data.data.description;
       document.getElementById("productStock").value = data.data.stock;
-      document.getElementById("productId").value = data.data._id; // Assuming you have a hidden input for product ID
+      document.getElementById("productId").value = data.data._id; 
     } else {
       alert("Error al obtener los detalles del producto");
     }
@@ -188,6 +191,7 @@ async function fetchProductDetails(productId) {
   }
 }
 
+// esto guarda los cambios de un producto en la bd
 async function fetchProductUpdate(productId, ProductData) {
   try {
     const response = await fetch(
@@ -216,6 +220,7 @@ async function fetchProductUpdate(productId, ProductData) {
   }
 }
 
+//crear un nuevo producto
 function openProductModal() {
   document.getElementById("create-product-modal").style.display = "block";
   overlay.style.display = "block";

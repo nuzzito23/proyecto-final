@@ -127,5 +127,5 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function redirectAfterRegister() {
-    window.location.href = "./login.html"; // Change to your logged-in page
+    window.location.href = "./login.html"; 
 }

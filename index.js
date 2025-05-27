@@ -8,7 +8,7 @@ const ventaRoute = require('./routes/ventas.routes');
 const paypalRoute = require('./routes/paypal.routes');
 
 
-// Initialize Express App
+// Premite hacer peticiones desde la app
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -18,20 +18,20 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// Serve Static Files
+// Archivos estáticos del servidor
 app.use(express.static(__dirname + '/static'));
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/static/html/home.html');
 });
 
 
-// Routes for Existing API
+// Rutas para API existentes
 app.use('/api/users', userRoute);
 app.use('/api/products', productRoute);
 app.use('/api/ventas', ventaRoute);
 app.use('/api/orders', paypalRoute);
 
-// Start Server
+// Iniciar servidor y conectar a la base de datos
 const PORT = process.env.PORT || 3000;
 connect();
 app.listen(PORT, () => {

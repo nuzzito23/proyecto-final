@@ -61,6 +61,6 @@ function saveToken(token) {
 function redirectAfterLogin() {
     const token = localStorage.getItem("authToken") || sessionStorage.getItem("authToken");
     if (token) {
-        window.location.href = "./admin.html"; // Change to your logged-in page
+        window.location.href = "./admin.html"; 
     }
 }

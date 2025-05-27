@@ -1,17 +1,18 @@
+//trae toda la lista de ventas del admin
 async function fetchOrders() {
     try {
-        const token = localStorage.getItem("authToken"); // Adjust the key name if needed
+        const token = localStorage.getItem("authToken"); // Ajuste el nombre de la clave si es necesario
 
         let response = await fetch('http://localhost:3000/api/ventas/list', {
             headers: {
                 "Authorization": `Bearer ${token}`,
                 "Content-Type": "application/json"
             }
-        }); // Replace with your backend URL
+        }); // Reemplazar con la URL de backend
         let data = await response.json();
         
         let tableBody = document.getElementById('ordersBody');
-        tableBody.innerHTML = ''; // Clear existing rows
+        tableBody.innerHTML = ''; // Borrar filas existentes
         
         data.data.forEach(order => {
             let row = document.createElement('tr');
@@ -39,4 +40,4 @@ async function fetchOrders() {
     }
 }
 
-fetchOrders(); // Call function to fetch and display orders
+fetchOrders(); // Llamar a la función para obtener y mostrar pedidos

@@ -3,16 +3,17 @@ const Product = require('../models/product');
 // Registrar un nuevo usuario
 exports.createProduct = async (req, res) => {
   try {
-    const productObject = req.body; // Get product data from request body
-    const newProduct = new Product(productObject); // Create a new product instance
+    const productObject = req.body; // Obtener datos del producto desde el cuerpo de la solicitud
+    const newProduct = new Product(productObject); // Crear una nueva instancia de producto
     newProduct.image = `/imgs/${req.file.filename}`
-    await newProduct.save(); // Save product to MongoDB
+    await newProduct.save(); // Guardar producto en MongoDB
     res.status(201).json({ message: 'Create product successfully', data: newProduct });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 };
 
+// Editar un producto existente
 exports.editProduct = async (req, res) => {
   try {
     const _id = req.params.id
@@ -43,6 +44,7 @@ exports.getProduct = async (req, res) => {
   }
 }
 
+// Eliminar un producto
 exports.deleteProduct = async (req, res) => {
   try {
     const product = await Product.findByIdAndDelete(req.params.id); // Delete product from MongoDB

@@ -1,10 +1,11 @@
+//se trae la lista de compras y la pega en la tabla de historial de compras del cliente
 async function fetchOrders() {
     try {
-        let response = await fetch('http://localhost:3000/api/ventas/list'); // Replace with your backend URL
+        let response = await fetch('http://localhost:3000/api/ventas/list'); 
         let data = await response.json();
         
         let tableBody = document.getElementById('ordersBody');
-        tableBody.innerHTML = ''; // Clear existing rows
+        tableBody.innerHTML = ''; 
         
         data.data.forEach(order => {
             let row = document.createElement('tr');
@@ -32,4 +33,4 @@ async function fetchOrders() {
     }
 }
 
-fetchOrders(); // Call function to fetch and display orders
+fetchOrders(); // Llamar a la función para obtener y mostrar los pedidos

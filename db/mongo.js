@@ -1,3 +1,4 @@
+//Esta es la conexion a la base de datos de mongoDB
 import mongoose from 'mongoose'
 const uri = process.env.MONGO_URI 
 const dbName = process.env.MONGO_DBNAME 

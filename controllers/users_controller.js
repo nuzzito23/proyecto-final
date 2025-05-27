@@ -17,6 +17,7 @@ exports.register = async (req, res) => {
   }
 };
 
+// Verifica el usuario para saber su rol
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body; // Get user credentials from request body
@@ -42,6 +43,7 @@ async function comparePassword(password, userPassword) {
   return await bcrypt.compare(password, userPassword);
 }
 
+//verifica el usuario para saber si es admin
 exports.adminLogin = async (req, res) => {
   try {
     const { email, password } = req.body; // Get user credentials from request body
