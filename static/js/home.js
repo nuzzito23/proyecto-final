@@ -50,3 +50,7 @@ async function fetchCatalogo() {
 
   // Call the function on page load
   fetchCatalogo();
+
+  function toggleMenu() {
+    document.querySelector(".nav-menu").classList.toggle("active");
+}
