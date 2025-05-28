@@ -111,10 +111,11 @@ async function saveChanges() {
     price,
     stock,
   };
-  await fetchProductUpdate(productId);
+  await fetchProductUpdate(productId,productData);
 
   alert(`Producto actualizado: ${name}, Precio: ${price}`);
   closeModal();
+  fetchCatalogo(); // Actualiza el catálogo después de guardar los cambios
 }
 
 window.addEventListener("click", function (event) {
@@ -240,6 +241,9 @@ document.getElementById("product-form").addEventListener("submit", async (event)
     const response = await fetch("http://localhost:3000/api/products/", {
       method: "POST",
       body: formData,
+      headers: {
+       "Authorization": `Bearer ${localStorage.getItem("authToken")}`,
+      }
     });
 
     const result = await response.json();

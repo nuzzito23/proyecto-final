@@ -17,7 +17,7 @@ exports.createProduct = async (req, res) => {
 exports.editProduct = async (req, res) => {
   try {
     const _id = req.params.id
-    const {productObject} = req.body; // Get product data from request body
+    const productObject = req.body; // Get product data from request body
     const product = await Product.findByIdAndUpdate(_id, productObject, { new: true }); // Update product in MongoDB
     res.status(201).json({ message: 'Edit product successfully', data: product });
   } catch (error) {
