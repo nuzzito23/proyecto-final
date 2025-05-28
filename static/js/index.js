@@ -231,6 +231,7 @@ const paypalButtons = window.paypal.Buttons({
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
+                        "Authorization": `Bearer ${localStorage.getItem("authToken")}`
                     },
                 }
             );
@@ -256,6 +257,9 @@ const paypalButtons = window.paypal.Buttons({
             } else if (!orderData.purchase_units) {
                 throw new Error(JSON.stringify(orderData));
             } else {
+                localStorage.removeItem("cart"); // Clear cart after successful payment
+                cart.length = 0; // Clear the cart array
+                window.location.reload(); // Reload the page to reflect changes
                 // (3) Successful transaction -> Show confirmation or thank you message
                 // Or go to another URL:  actions.redirect('thank_you.html');
                 const transaction =

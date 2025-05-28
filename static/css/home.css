@@ -133,11 +133,16 @@ body {
 }
 
 #catalogo-container{
-  width: auto;
-  height: 10%;
   display: flex;
   flex-direction: row;
-  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  /* Space between items and buttons */
+  align-items: center;
+  width: auto;
+  margin: auto;
+  scroll-behavior: smooth;
+  overflow: hidden;
 }
 
 #catalogo-items {

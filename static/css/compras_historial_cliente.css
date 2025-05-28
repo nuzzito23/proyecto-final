@@ -32,6 +32,14 @@ body {
     font-family: Arial, sans-serif;
     margin: 20px;
 }
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust based on your layout */
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -41,6 +49,8 @@ table {
 .table-container {
     overflow-x: auto;
     display: block;
+    margin: 0 auto;
+    text-align: center;
 }
 
 th, td {

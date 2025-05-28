@@ -1,7 +1,13 @@
 //se trae la lista de compras y la pega en la tabla de historial de compras del cliente
 async function fetchOrders() {
     try {
-        let response = await fetch('http://localhost:3000/api/ventas/list'); 
+        const token = localStorage.getItem('authToken');
+        let response = await fetch('http://localhost:3000/api/ventas/list',{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+        }); 
         let data = await response.json();
         
         let tableBody = document.getElementById('ordersBody');
